@@ -1,11 +1,12 @@
-FROM openjdk:17
+FROM eclipse-temurin:17-jdk-jammy
 
-MAINTAINER <Ashok Bollepalli>
+LABEL maintainer="Ashok Bollepalli"
 
-COPY target/products_api.jar  /usr/app/
+WORKDIR /app
 
-WORKDIR /usr/app/
-
-ENTRYPOINT ["java", "-jar", "products_api.jar"]
+COPY target/products_api.jar app.jar
 
 EXPOSE 8080
+
+CMD ["java", "-jar", "app.jar"]
+
